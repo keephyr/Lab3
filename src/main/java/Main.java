@@ -1,21 +1,25 @@
+import objects.Member;
 import services.ClubService;
 
+
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
     private static final ClubService service = new ClubService();
 
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int answer;
         do {
-            System.out.print("1)Add Member;\n2)Show All;\n3)Search Member;\n4)Sort members;\n6)Delete members;\nВыберите действие: ");
+            System.out.print("1)Добавить мембера;\n2)Показать всех;\n3)Поиск мембера;\n4)Сортировка мемберов;\n6)Удалить мембера;\n7)Сохранить/получить данные;\n");
+            System.out.print("Выберите действие: ");
             answer = scanner.nextInt();
             switch (answer) {
                 case 1:
                     service.addMember();
                     break;
-
                 case 2:
                     service.ShowAll();
                     break;
@@ -34,6 +38,17 @@ public class Main {
                         System.out.println("Доступ запрещен");
                     }
                     break;
+                case 7:
+                    if (service.isEmpty()){
+                        service.GetFromFile();
+                        System.out.println("Данные получены из файла");
+                    } else {
+                        service.PutIntoFile();
+                        System.out.println("Данные выгружены в файл");
+                    }
+                    break;
+                case 9:
+                    service.ManageMember();
                 default:
                     System.out.println("Ошибка ввода, повторите попытку");
                 case 0:

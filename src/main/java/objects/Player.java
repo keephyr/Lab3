@@ -1,6 +1,9 @@
 package objects;
 
-public class Player extends Member{
+import interfaces.Payable;
+import interfaces.Trainable;
+
+public class Player extends Member implements Payable, Trainable {
     private String position;
     private int number;
 
@@ -34,4 +37,22 @@ public class Player extends Member{
                 ", number=" + number +
                 "} ";
     }
+
+    @Override
+    public void TrainMember(int day, int month, int year) {
+        System.out.println("Игрок " + this.getName() + " потренировался ("+day+"/"+month+"/"+year+")");
+    }
+    @Override
+    public void PayMember() {
+        System.out.println("Игроку " + this.getName() + " заплатили");
+    }
+    @Override
+    public boolean isTrainable() {
+        return true;
+    }
+    @Override
+    public boolean isPayable() {
+        return true;
+    }
+
 }

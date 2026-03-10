@@ -3,7 +3,7 @@ package objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class Member {
+public abstract class Member {
     private static final AtomicInteger idGenerator = new AtomicInteger(0);
     private final int id;
     private String role = "member";
@@ -67,5 +67,6 @@ public class Member {
                 ", team='" + team + '\'' +
                 '}';
     }
-
+    public abstract boolean isPayable();
+    public abstract boolean isTrainable();
 }

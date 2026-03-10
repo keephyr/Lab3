@@ -1,16 +1,14 @@
 package objects;
 
-import interfaces.Raisable;
+import interfaces.Payable;
 
-public class Manager extends Member implements Raisable {
+public class Manager extends Member implements Payable {
     private String contact;
-    private String position;
 
     public Manager(String name, String team, int exp,int age, String contact) {
         super(name, team, exp,age);
         this.setRole("manager");
         this.contact = contact;
-        this.position = "junior";
     }
 
     public String getContact() {
@@ -25,21 +23,18 @@ public class Manager extends Member implements Raisable {
     public String toString() {
         return super.toString() + " - Manager{" +
                 "contact='" + contact + '\'' +
-                "} ";
+                "}";
     }
 
     @Override
-    public void raiseMember() {
-        position = positions.get(positions.indexOf(position)+1);
+    public void PayMember() {
+        System.out.println("Менеджеру " + this.getName() + " заплатили");
     }
-
     @Override
-    public void lowerMember() {
-        position = positions.get(positions.indexOf(position)-1);
+    public boolean isPayable() {
+        return true;
     }
-
-    @Override
-    public void showPosition() {
-        System.out.println(this.position);
+    public boolean isTrainable() {
+        return false;
     }
 }

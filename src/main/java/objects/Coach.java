@@ -1,6 +1,8 @@
 package objects;
 
-public class Coach extends Member{
+import interfaces.Payable;
+
+public class Coach extends Member implements Payable {
     private int amountOfPeople;
     private String type;
 
@@ -33,5 +35,17 @@ public class Coach extends Member{
                 "amountOfPeople=" + amountOfPeople +
                 ", type='" + type + '\'' +
                 '}';
+    }
+
+    @Override
+    public void PayMember() {
+        System.out.println("Тренеру " + this.getName() + " заплатили");
+    }
+    @Override
+    public boolean isPayable() {
+        return true;
+    }
+    public boolean isTrainable() {
+        return false;
     }
 }
